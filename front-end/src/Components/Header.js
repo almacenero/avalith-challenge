@@ -16,9 +16,7 @@ const imgStyle = css({
 })
 const Header = () => <>
  <Grid container css={headStyle}>
-  <Grid item> <img css={imgStyle} src={avalith} alt="avalith" 
-    
-/></Grid>
+  <Grid item> <img css={imgStyle} src={avalith} alt="avalith"  /></Grid>
  </Grid>
 </>
 
