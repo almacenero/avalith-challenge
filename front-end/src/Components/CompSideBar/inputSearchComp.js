@@ -1,10 +1,11 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import {Grid} from '@material-ui/core'
 
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import TextField from '@material-ui/core/TextField'
+import {AppContext} from './../../Context/AppContext'
 
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
@@ -35,9 +36,12 @@ const styles = theme => ({
 
 const InputSearchCard = props =>{
   const { classes } = props
-  
+  const {handleSearch} = useContext(AppContext)
   return <>
     <TextField
+    onChange={(e)=>{
+      handleSearch(e.target.value)
+    }}
     style={style}
     id="standard-bare"
     className={classes.textField}

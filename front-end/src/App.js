@@ -6,6 +6,8 @@ import SiderBar from './Components/SiderBar'
 import BodyApp from './Components/Body'
 import Cards from './data/cards.json'
 import {AppContext} from './Context/AppContext'
+import { BrowserRouter as Router, Route,} from 'react-router-dom'
+import Post from './Components/CompBody/Post'
 
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
@@ -19,16 +21,20 @@ function App() {
   const {handleAddCards} = useContext(AppContext)
  
   return (
-   <>
-   {()=>{ handleAddCards(Cards)}}
+   <Router>
+     {()=>{ handleAddCards(Cards)}}
     <Header />
     <Grid container css={borde}>
       <SiderBar />
-      <BodyApp />
+      <Route exact path="/" render={(routeProps)=>(
+              <BodyApp {...routeProps} />
+      )}/>
+      <Route path="/post" component={Post} />
     </Grid>
-    
-   </>
+    </Router>
   );
+   
+   
 }
 
 export default App;
